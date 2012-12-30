@@ -42,7 +42,7 @@ params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 OverMF <- hyperGTest(params)
 summary(OverMF)
 OverMF
-write.csv(summary(OverMF),"OverMF_enrich.slim.csv");
+write.csv(summary(OverMF),"SNP.OverMF_enrich.slim.csv");
 
 paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
