@@ -1,0 +1,63 @@
+#NEXUS 
+
+Begin trees;  [Treefile saved Sun May 20 19:43:54 2012]
+[!
+>Data file = /home/jstajich/projects/Bd/LOH/LOH_locs_combined.nex
+>Neighbor-joining search settings:
+>  Ties (if encountered) will be broken systematically
+>  Distance measure = mean character difference
+>  (Tree is unrooted)
+]
+	Translate
+		1 Au.Lcaerulae98,
+		2 C2A,
+		3 CCB1,
+		4 CJB4,
+		5 CJB5.2,
+		6 CJB7,
+		7 CLFT021,
+		8 CLFT023,
+		9 CLFT024,
+		10 CLFT024.02,
+		11 CLFT026,
+		12 EV001,
+		13 IA042,
+		14 JEL238,
+		15 JEL261,
+		16 JEL267,
+		17 JEL270,
+		18 JEL271,
+		19 JEL274,
+		20 JEL275,
+		21 JEL289,
+		22 JEL310,
+		23 JEL359,
+		24 JEL408,
+		25 JEL423,
+		26 JEL427,
+		27 JEL429,
+		28 JEL433,
+		29 JEL627,
+		30 L2203,
+		31 LBAbercrom,
+		32 LFT001_10,
+		33 MC55,
+		34 MCT8,
+		35 MLA1,
+		36 MexMkt,
+		37 NCRC106979,
+		38 PNP08489,
+		39 SRS812,
+		40 TF5a1,
+		41 TSTS75,
+		42 UKTvB,
+		43 UM142,
+		44 VAo2,
+		45 VAo4,
+		46 VAo5,
+		47 VRp1,
+		48 X0711,
+		49 X0739
+		;
+tree PAUP_1 = [&U] (((((((((((1:9,(30:6,31:3):5):1,((7:9,34:4):2,(((8:0,((24:0,37:1):2,25:0):2):0,(26:4,28:2):2):1,(((9:2,(12:2,27:5):1):2,22:1):2,(19:6,20:2):2):2):0):2):1,((2:5,17:5):2,18:4):4):2,((((4:2,41:6):3,(((44:6,46:5):1,47:8):4,45:5):3):1,36:7):1,((11:4,29:3):1,16:2):1):3):2,(5:3,6:2):3):2,((((13:4,38:8):4,23:5):3,(14:3,(15:3,48:9):2):2):1,(35:3,42:5):0):5):2,(21:7,39:5):2):3,40:6):1,((10:1,49:2):1,33:14):5):1,3:4):0,32:7,43:6);
+End;

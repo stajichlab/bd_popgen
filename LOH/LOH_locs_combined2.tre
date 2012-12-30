@@ -1,0 +1,130 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=49;
+	taxlabels
+	'Au.Lcaerulae98'
+	C2A
+	MCT8
+	L2203
+	JEL270
+	JEL274
+	CJB4
+	TSTS75
+	CLFT026
+	JEL267
+	JEL271
+	MexMkt
+	JEL289
+	MLA1
+	SRS812
+	'CJB5.2'
+	CJB7
+	CLFT021
+	CLFT023
+	EV001
+	JEL427
+	JEL433
+	CLFT024
+	LBAbercrom
+	JEL627
+	JEL275
+	JEL429
+	JEL310
+	JEL408
+	NCRC106979
+	JEL423
+	IA042
+	UKTvB
+	JEL261
+	PNP08489
+	X0711
+	VAo2
+	VAo4
+	VAo5
+	VRp1
+	JEL238
+	JEL359
+	CCB1
+	TF5a1
+	X0739
+	MC55
+	'CLFT024.02'
+	LFT001_10
+	UM142
+;
+end;
+
+begin trees;
+	tree PAUP_1 = [&U] (((((((('Au.Lcaerulae98':0.006833,C2A:0.015064):0.008569,MCT8:0.013329):0.002064,L2203:0.041308):0.002661,(JEL270:0.041,JEL274:0.039292):0.003395):0.009748,((((CJB4:0.056686,TSTS75:0.045504):0.010706,(CLFT026:0.069731,JEL267:0.039758):0.003893):0.007646,((JEL271:0.047057,MexMkt:0.069731):0.002958,(JEL289:0.1106,(MLA1:0.054046,SRS812:0.070042):0.006189):0.014443):0.004625):0.002184,((('CJB5.2':0.034167,CJB7:0.016928):0.025216,(((((CLFT021:0.026402,CLFT023:0.010095):0.006894,(EV001:0.036341,JEL427:0.036652):0.007705):0.004728,JEL433:0.050017):0.003329,((CLFT024:0.034943,LBAbercrom:0.038049):0.010552,JEL627:0.033243):0.003699):0.003005,((JEL275:0.048299,JEL429:0.068489):0.00238,JEL310:0.026817):0.008955):0.007307):0.001747,((JEL408:0.01258,NCRC106979:0.009318):0.015709,JEL423:0.035386):0.018522):0.00956):0.006454):0.008406,((((IA042:0.024383,UKTvB:0.026712):0.002986,(JEL261:0.034672,(PNP08489:0.046125,X0711:0.041466):0.001825):0.006138):0.006683,((VAo2:0.014995,(VAo4:0.017083,VAo5:0.026712):0.006903):0.00316,VRp1:0.028602):0.014055):0.005351,(JEL238:0.033701,JEL359:0.05389):0.018952):0.001765):0.025312,((((CCB1:0.0,TF5a1:0.007299):0.0,X0739:0.0):3.24E-4,MC55:0.006975):0.006888,'CLFT024.02':0.007548):0.015234):0.052068,LFT001_10:0.068489,UM142:0.084796);
+	tree PAUP_2 = [&U] (((((((('Au.Lcaerulae98':0.006833,C2A:0.015064):0.008569,MCT8:0.013329):0.002064,L2203:0.041308):0.002661,(JEL270:0.041,JEL274:0.039292):0.003395):0.009748,((((CJB4:0.056686,TSTS75:0.045504):0.010706,(CLFT026:0.069731,JEL267:0.039758):0.003893):0.007646,((JEL271:0.047057,MexMkt:0.069731):0.002958,(JEL289:0.1106,(MLA1:0.054046,SRS812:0.070042):0.006189):0.014443):0.004625):0.002184,((('CJB5.2':0.034167,CJB7:0.016928):0.025216,(((((CLFT021:0.026402,CLFT023:0.010095):0.006894,(EV001:0.036341,JEL427:0.036652):0.007705):0.004728,JEL433:0.050017):0.003329,((CLFT024:0.034943,LBAbercrom:0.038049):0.010552,JEL627:0.033243):0.003699):0.003005,((JEL275:0.048299,JEL429:0.068489):0.00238,JEL310:0.026817):0.008955):0.007307):0.001747,((JEL408:0.01258,NCRC106979:0.009318):0.015709,JEL423:0.035386):0.018522):0.00956):0.006454):0.008406,((((IA042:0.024383,UKTvB:0.026712):0.002986,(JEL261:0.034672,(PNP08489:0.046125,X0711:0.041466):0.001825):0.006138):0.006683,((VAo2:0.014995,(VAo4:0.017083,VAo5:0.026712):0.006903):0.00316,VRp1:0.028602):0.014055):0.005351,(JEL238:0.033701,JEL359:0.05389):0.018952):0.001765):0.025312,(((CCB1:0.0,(TF5a1:0.007299,X0739:0.0):0.0):3.24E-4,MC55:0.006975):0.006888,'CLFT024.02':0.007548):0.015234):0.052068,LFT001_10:0.068489,UM142:0.084796);
+	tree PAUP_3 = [&U] (((((((('Au.Lcaerulae98':0.006833,C2A:0.015064):0.008569,MCT8:0.013329):0.002064,L2203:0.041308):0.002661,(JEL270:0.041,JEL274:0.039292):0.003395):0.009748,((((CJB4:0.056686,TSTS75:0.045504):0.010706,(CLFT026:0.069731,JEL267:0.039758):0.003893):0.007646,((JEL271:0.047057,MexMkt:0.069731):0.002958,(JEL289:0.1106,(MLA1:0.054046,SRS812:0.070042):0.006189):0.014443):0.004625):0.002184,((('CJB5.2':0.034167,CJB7:0.016928):0.025216,(((((CLFT021:0.026402,CLFT023:0.010095):0.006894,(EV001:0.036341,JEL427:0.036652):0.007705):0.004728,JEL433:0.050017):0.003329,((CLFT024:0.034943,LBAbercrom:0.038049):0.010552,JEL627:0.033243):0.003699):0.003005,((JEL275:0.048299,JEL429:0.068489):0.00238,JEL310:0.026817):0.008955):0.007307):0.001747,((JEL408:0.01258,NCRC106979:0.009318):0.015709,JEL423:0.035386):0.018522):0.00956):0.006454):0.008406,((((IA042:0.024383,UKTvB:0.026712):0.002986,(JEL261:0.034672,(PNP08489:0.046125,X0711:0.041466):0.001825):0.006138):0.006683,((VAo2:0.014995,(VAo4:0.017083,VAo5:0.026712):0.006903):0.00316,VRp1:0.028602):0.014055):0.005351,(JEL238:0.033701,JEL359:0.05389):0.018952):0.001765):0.025312,((((CCB1:0.0,X0739:0.0):0.0,TF5a1:0.007299):3.24E-4,MC55:0.006975):0.006888,'CLFT024.02':0.007548):0.015234):0.052068,LFT001_10:0.068489,UM142:0.084796);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="User Selection";
+	set appearance.backgroundColour=#-1;
+	set appearance.branchColorAttribute="User Selection";
+	set appearance.branchLineWidth=1.0;
+	set appearance.foregroundColour=#-16777216;
+	set appearance.selectionColour=#-2144520576;
+	set branchLabels.colorAttribute="User Selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName="sansserif";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set nodeBars.barWidth=4.0;
+	set nodeLabels.colorAttribute="User Selection";
+	set nodeLabels.displayAttribute="Node ages";
+	set nodeLabels.fontName="sansserif";
+	set nodeLabels.fontSize=8;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=false;
+	set nodeLabels.significantDigits=4;
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleAxis.significantDigits=4;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=0.0;
+	set scaleBar.significantDigits=4;
+	set tipLabels.colorAttribute="User Selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName="sansserif";
+	set tipLabels.fontSize=8;
+	set tipLabels.fontStyle=0;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=false;
+	set trees.orderType="increasing";
+	set trees.rooting=false;
+	set trees.rootingType="User Selection";
+	set trees.transform=false;
+	set trees.transformType="cladogram";
+end;
+

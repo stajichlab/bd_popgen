@@ -1,0 +1,105 @@
+> X0711
+start	end	width
+> EV001
+start	end	width
+> PNP08489
+start	end	width
+> UKTvB
+start	end	width
+> JEL238
+start	end	width
+> VAo2
+start	end	width
+> VAo4
+start	end	width
+> VRp1
+start	end	width
+> VAo5
+start	end	width
+> Au.Lcaerulae98
+start	end	width
+> JEL271
+start	end	width
+> JEL274
+start	end	width
+> CJB4
+start	end	width
+163300	465800	302501
+> CLFT024.02
+start	end	width
+> JEL261
+start	end	width
+> MLA1
+start	end	width
+> IA042
+start	end	width
+> JEL359
+start	end	width
+> JEL289
+start	end	width
+100	465800	465701
+> MexMkt
+start	end	width
+> SRS812
+start	end	width
+> TSTS75
+start	end	width
+> JEL627
+start	end	width
+> CJB5.2
+start	end	width
+344100	465800	121701
+> CJB7
+start	end	width
+100	465800	465701
+> JEL270
+start	end	width
+> CLFT021
+start	end	width
+> CLFT023
+start	end	width
+> JEL275
+start	end	width
+> JEL433
+start	end	width
+> CLFT024
+start	end	width
+> CLFT026
+start	end	width
+> JEL310
+start	end	width
+100	465800	465701
+> JEL427
+start	end	width
+> JEL429
+start	end	width
+> LBAbercrom
+start	end	width
+> JEL408
+start	end	width
+> NCRC106979
+start	end	width
+> JEL423
+start	end	width
+> MCT8
+start	end	width
+> L2203
+start	end	width
+> C2A
+start	end	width
+> JEL267
+start	end	width
+218900	465800	246901
+> CCB1
+start	end	width
+> MC55
+start	end	width
+> TF5a1
+start	end	width
+> X0739
+start	end	width
+> LFT001_10
+start	end	width
+> UM142
+start	end	width
+216400	465800	249401

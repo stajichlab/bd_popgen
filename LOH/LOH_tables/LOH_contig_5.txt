@@ -1,0 +1,152 @@
+> X0711
+start	end	width
+1447000	1623800	176801
+> EV001
+start	end	width
+100	583100	583001
+975600	1686300	710701
+> PNP08489
+start	end	width
+1435000	1619300	184301
+> UKTvB
+start	end	width
+1448600	1686300	237701
+> JEL238
+start	end	width
+858900	1686300	827401
+> VAo2
+start	end	width
+1484100	1619300	135201
+> VAo4
+start	end	width
+1484100	1619300	135201
+> VRp1
+start	end	width
+1502000	1619300	117301
+> VAo5
+start	end	width
+1484100	1613800	129701
+> Au.Lcaerulae98
+start	end	width
+975600	1686300	710701
+> JEL271
+start	end	width
+1003200	1686300	683101
+> JEL274
+start	end	width
+981900	1686300	704401
+> CJB4
+start	end	width
+1235500	1686300	450801
+> CLFT024.02
+start	end	width
+> JEL261
+start	end	width
+1448600	1686300	237701
+> MLA1
+start	end	width
+1212300	1686300	474001
+> IA042
+start	end	width
+1481700	1619300	137601
+> JEL359
+start	end	width
+805100	1627200	822101
+> JEL289
+start	end	width
+1209400	1686300	476901
+> MexMkt
+start	end	width
+100	157500	157401
+1083100	1686300	603201
+> SRS812
+start	end	width
+100	138500	138401
+1235500	1686300	450801
+> TSTS75
+start	end	width
+1235500	1686300	450801
+> JEL627
+start	end	width
+100	254600	254501
+1484100	1619300	135201
+> CJB5.2
+start	end	width
+1079500	1686300	606801
+> CJB7
+start	end	width
+1079500	1686300	606801
+> JEL270
+start	end	width
+1003200	1627700	624501
+> CLFT021
+start	end	width
+100	237900	237801
+975300	1686300	711001
+> CLFT023
+start	end	width
+100	133800	133701
+975600	1686300	710701
+> JEL275
+start	end	width
+975600	1686300	710701
+> JEL433
+start	end	width
+100	191900	191801
+975600	1686300	710701
+> CLFT024
+start	end	width
+975600	1686300	710701
+> CLFT026
+start	end	width
+802600	1686300	883701
+> JEL310
+start	end	width
+975600	1686300	710701
+> JEL427
+start	end	width
+100	159800	159701
+975600	1686300	710701
+> JEL429
+start	end	width
+100	681000	680901
+975600	1686300	710701
+> LBAbercrom
+start	end	width
+975600	1686300	710701
+> JEL408
+start	end	width
+975600	1686300	710701
+> NCRC106979
+start	end	width
+975600	1686300	710701
+> JEL423
+start	end	width
+975600	1686300	710701
+> MCT8
+start	end	width
+975600	1686300	710701
+> L2203
+start	end	width
+975600	1686300	710701
+> C2A
+start	end	width
+1003200	1686300	683101
+> JEL267
+start	end	width
+1235500	1686300	450801
+> CCB1
+start	end	width
+> MC55
+start	end	width
+> TF5a1
+start	end	width
+> X0739
+start	end	width
+> LFT001_10
+start	end	width
+100	283300	283201
+1042800	1686300	643501
+> UM142
+start	end	width
+100	283800	283701

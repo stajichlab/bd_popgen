@@ -1,0 +1,151 @@
+> X0711
+start	end	width
+571500	675300	103801
+> EV001
+start	end	width
+571500	675300	103801
+> PNP08489
+start	end	width
+571500	675300	103801
+> UKTvB
+start	end	width
+571500	675300	103801
+> JEL238
+start	end	width
+570900	675300	104401
+> VAo2
+start	end	width
+572300	675300	103001
+> VAo4
+start	end	width
+571500	675300	103801
+> VRp1
+start	end	width
+570600	675300	104701
+> VAo5
+start	end	width
+571500	675300	103801
+> Au.Lcaerulae98
+start	end	width
+571500	675300	103801
+> JEL271
+start	end	width
+571500	675300	103801
+> JEL274
+start	end	width
+571500	675300	103801
+> CJB4
+start	end	width
+571500	675300	103801
+> CLFT024.02
+start	end	width
+> JEL261
+start	end	width
+571500	675300	103801
+> MLA1
+start	end	width
+571500	675300	103801
+> IA042
+start	end	width
+571500	675300	103801
+> JEL359
+start	end	width
+571500	675300	103801
+> JEL289
+start	end	width
+100	266700	266601
+349300	549800	200501
+571500	675300	103801
+775000	891100	116101
+> MexMkt
+start	end	width
+571500	891100	319601
+> SRS812
+start	end	width
+571500	675300	103801
+> TSTS75
+start	end	width
+571500	675300	103801
+> JEL627
+start	end	width
+100	170400	170301
+571500	675300	103801
+> CJB5.2
+start	end	width
+571500	675300	103801
+> CJB7
+start	end	width
+571500	675300	103801
+> JEL270
+start	end	width
+571500	675300	103801
+> CLFT021
+start	end	width
+100	178700	178601
+570600	675300	104701
+> CLFT023
+start	end	width
+100	129800	129701
+571500	675300	103801
+> JEL275
+start	end	width
+571500	675300	103801
+> JEL433
+start	end	width
+571500	675300	103801
+> CLFT024
+start	end	width
+100	169500	169401
+571500	675300	103801
+> CLFT026
+start	end	width
+100	251000	250901
+571500	675300	103801
+> JEL310
+start	end	width
+571500	675300	103801
+> JEL427
+start	end	width
+571500	675300	103801
+> JEL429
+start	end	width
+571500	675300	103801
+> LBAbercrom
+start	end	width
+100	272000	271901
+571500	675300	103801
+> JEL408
+start	end	width
+571500	675300	103801
+> NCRC106979
+start	end	width
+571500	675300	103801
+> JEL423
+start	end	width
+571500	675300	103801
+> MCT8
+start	end	width
+571500	675300	103801
+> L2203
+start	end	width
+573300	676300	103001
+> C2A
+start	end	width
+570900	675300	104401
+> JEL267
+start	end	width
+571500	675300	103801
+> CCB1
+start	end	width
+> MC55
+start	end	width
+> TF5a1
+start	end	width
+> X0739
+start	end	width
+> LFT001_10
+start	end	width
+100	119800	119701
+> UM142
+start	end	width
+100	119800	119701

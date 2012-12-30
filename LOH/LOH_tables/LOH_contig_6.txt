@@ -1,0 +1,143 @@
+> X0711
+start	end	width
+> EV001
+start	end	width
+100	297300	297201
+733700	1536400	802701
+> PNP08489
+start	end	width
+> UKTvB
+start	end	width
+> JEL238
+start	end	width
+1222500	1536400	313901
+> VAo2
+start	end	width
+> VAo4
+start	end	width
+> VRp1
+start	end	width
+> VAo5
+start	end	width
+> Au.Lcaerulae98
+start	end	width
+100	297300	297201
+> JEL271
+start	end	width
+100	297300	297201
+> JEL274
+start	end	width
+100	297400	297301
+> CJB4
+start	end	width
+956900	1536400	579501
+> CLFT024.02
+start	end	width
+> JEL261
+start	end	width
+> MLA1
+start	end	width
+1174800	1536400	361601
+> IA042
+start	end	width
+> JEL359
+start	end	width
+> JEL289
+start	end	width
+100	143800	143701
+248500	531200	282701
+1313600	1536400	222801
+> MexMkt
+start	end	width
+100	136900	136801
+733700	1536400	802701
+> SRS812
+start	end	width
+1402700	1536400	133701
+> TSTS75
+start	end	width
+> JEL627
+start	end	width
+100	297300	297201
+> CJB5.2
+start	end	width
+100	297300	297201
+1305900	1536400	230501
+> CJB7
+start	end	width
+100	297300	297201
+> JEL270
+start	end	width
+100	320300	320201
+> CLFT021
+start	end	width
+100	297300	297201
+> CLFT023
+start	end	width
+100	297300	297201
+> JEL275
+start	end	width
+100	297300	297201
+367500	1536400	1168901
+> JEL433
+start	end	width
+100	297300	297201
+725400	1536400	811001
+> CLFT024
+start	end	width
+100	297300	297201
+> CLFT026
+start	end	width
+100	516500	516401
+> JEL310
+start	end	width
+100	322700	322601
+> JEL427
+start	end	width
+100	455000	454901
+> JEL429
+start	end	width
+100	297300	297201
+1184100	1536400	352301
+> LBAbercrom
+start	end	width
+100	297300	297201
+> JEL408
+start	end	width
+100	297300	297201
+1402700	1536400	133701
+> NCRC106979
+start	end	width
+100	300500	300401
+367500	1536400	1168901
+> JEL423
+start	end	width
+100	305600	305501
+1402700	1536400	133701
+> MCT8
+start	end	width
+100	320300	320201
+> L2203
+start	end	width
+100	297300	297201
+> C2A
+start	end	width
+100	297300	297201
+> JEL267
+start	end	width
+100	455000	454901
+> CCB1
+start	end	width
+> MC55
+start	end	width
+> TF5a1
+start	end	width
+> X0739
+start	end	width
+> LFT001_10
+start	end	width
+100	411900	411801
+> UM142
+start	end	width
+100	481500	481401
+1356800	1536400	179601
