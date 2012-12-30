@@ -1,17 +1,14 @@
-library("GSEABase")
-library("GOstats")
-library("AnnotationDbi")
-
 # read in the table
-nonSynSNPtable <-read.table("29strains_dnds_UM142_over1.txt",header=F,sep="\t",stringsAsFactors=F, quote="")
+nonSynSNPtable <-read.table("49strains_Nonsynonymous_UM142_anno_top10quan.txt",header=T,sep="\t",stringsAsFactors=F, quote="")
 # get ride of genes which empy lines
-genes <- nonSynSNPtable$V1
+genes <- subset(nonSynSNPtable$Broad_Gene_ID,nonSynSNPtable$Broad_Gene_ID != 'NA')
 
 #get the list of all genes
 allgenes <- read.csv("BD_trans_to_gene.tab",
 	 header=F,stringsAsFactors=F,sep=" ",quote="")
 # just want the names of the universe of possible genes
 universe <- unique(allgenes$V2)
+
 
 #universe
 #genes
@@ -20,12 +17,15 @@ universe <- unique(allgenes$V2)
 mode(universe)
 mode(genes)
 
+library("AnnotationDbi")
 # define the table of GO terms for genes from this tab delimited file
-godat <- read.table("JEL423.IPR.GO_slim",header=F,sep="\t");
+godat <- read.table("JEL423.IPR.GO",header=F);
 goframeData <- data.frame(godat$V1, godat$V2, godat$V3)
 goFrame <- GOFrame(goframeData,organism="Batrachochytrium dendrobatidis")
 goAllFrame=GOAllFrame(goFrame)
 
+library("GSEABase")
+library("GOstats")
 
 gsc <- GeneSetCollection(goAllFrame, setType = GOCollection())
 
@@ -41,7 +41,8 @@ params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 
 OverMF <- hyperGTest(params)
 summary(OverMF)
-write.csv(summary(OverMF),"SNP.OverMF_enrich_29strains.slim.csv");
+OverMF
+write.csv(summary(OverMF),"SNP.OverMF_enrich.csv");
 
 paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
@@ -54,7 +55,9 @@ paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 
 OverCC <- hyperGTest(paramsCC)
 summary(OverCC)
-write.csv(summary(OverCC),"SNP.OverCC_enrich_29strains.slim.csv");
+OverCC
+write.csv(summary(OverCC),"SNP.OverCC_enrich.csv");
+
 paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
 	  geneIds = genes,
@@ -66,34 +69,9 @@ paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 
 OverBP <- hyperGTest(paramsBP)
 summary(OverBP)
-write.csv(summary(OverBP),"SNP.OverBP_enrich_29strains.slim.csv");
-# you can look for underrepresented too with the 'testDirection="under"'
+OverBP
+write.csv(summary(OverBP),"SNP.OverBP_enrich.csv");
 
-paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
-          geneSetCollection=gsc,
-          geneIds = genes,
-          universeGeneIds = universe,
-          ontology = "CC",
-          pvalueCutoff = 0.05,
-          conditional = FALSE,
-          testDirection = "under")
-
-UnderCC <- hyperGTest(paramsCC)
-summary(UnderCC)
-write.csv(summary(UnderCC),"SNP.UnderCC_enrich_29strains.slim.csv");
-
-paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
-          geneSetCollection=gsc,
-          geneIds = genes,
-          universeGeneIds = universe,
-          ontology = "BP",
-          pvalueCutoff = 0.05,
-          conditional = FALSE,
-          testDirection = "under")
-
-UnderBP <- hyperGTest(paramsBP)
-summary(UnderBP)
-write.csv(summary(UnderBP),"SNP.UnderBP_enrich_29strains.slim.csv");
 
 params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
@@ -107,4 +85,34 @@ params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 
 UnderMF <- hyperGTest(params)
 summary(UnderMF)
-write.csv(summary(UnderMF),"SNP.UnderMF_enrich_29strains.slim.csv");
+UnderMF
+write.csv(summary(Under),"SNP.UnderMF_enrich.csv");
+
+
+paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
+          geneSetCollection=gsc,
+          geneIds = genes,
+          universeGeneIds = universe,
+          ontology = "CC",
+          pvalueCutoff = 0.05,
+          conditional = FALSE,
+          testDirection = "under")
+
+UnderCC <- hyperGTest(paramsCC)
+summary(UnderCC)
+UnderCC
+write.csv(summary(UnderCC),"SNP.UnderCC_enrich.csv");
+
+paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
+          geneSetCollection=gsc,
+          geneIds = genes,
+          universeGeneIds = universe,
+          ontology = "BP",
+          pvalueCutoff = 0.05,
+          conditional = FALSE,
+          testDirection = "under")
+
+UnderBP <- hyperGTest(paramsBP)
+summary(UnderBP)
+UnderBP
+write.csv(summary(UnderBP),"SNP.UnderBP_enrich.csv");

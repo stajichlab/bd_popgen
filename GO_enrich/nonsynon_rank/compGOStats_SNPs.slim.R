@@ -7,7 +7,7 @@ genes <- subset(nonSynSNPtable$Broad_Gene_ID,nonSynSNPtable$Broad_Gene_ID != 'NA
 allgenes <- read.csv("BD_trans_to_gene.tab",
 	 header=F,stringsAsFactors=F,sep=" ",quote="")
 # just want the names of the universe of possible genes
-universe <- allgenes$V2
+universe <- unique(allgenes$V2)
 
 
 #universe
@@ -19,7 +19,7 @@ mode(genes)
 
 library("AnnotationDbi")
 # define the table of GO terms for genes from this tab delimited file
-godat <- read.table("JEL423.INTERPRO.go_slim",header=F,sep="\t");
+godat <- read.table("JEL423.IPR.GO_slim",header=F,sep="\t");
 goframeData <- data.frame(godat$V1, godat$V2, godat$V3)
 goFrame <- GOFrame(goframeData,organism="Batrachochytrium dendrobatidis")
 goAllFrame=GOAllFrame(goFrame)
@@ -39,10 +39,10 @@ params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 	  testDirection = "over")
 
 
-Over <- hyperGTest(params)
-summary(Over)
-Over
-write.csv(summary(Over),"OverMF_enrich.slim.csv");
+OverMF <- hyperGTest(params)
+summary(OverMF)
+OverMF
+write.csv(summary(OverMF),"OverMF_enrich.slim.csv");
 
 paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
@@ -56,7 +56,7 @@ paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 OverCC <- hyperGTest(paramsCC)
 summary(OverCC)
 OverCC
-write.csv(summary(OverCC),"OverCC_enrich.slim.csv");
+write.csv(summary(OverCC),"SNP.OverCC_enrich.slim.csv");
 paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
 	  geneIds = genes,
@@ -69,7 +69,7 @@ paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 OverBP <- hyperGTest(paramsBP)
 summary(OverBP)
 OverBP
-write.csv(summary(OverBP),"OverBP_enrich.slim.csv");
+write.csv(summary(OverBP),"SNP.OverBP_enrich.slim.csv");
 # you can look for underrepresented too with the 'testDirection="under"'
 
 paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
@@ -84,7 +84,7 @@ paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 UnderCC <- hyperGTest(paramsCC)
 summary(UnderCC)
 UnderCC
-write.csv(summary(UnderCC),"UnderCC_enrich.slim.csv");
+write.csv(summary(UnderCC),"SNP.UnderCC_enrich.slim.csv");
 
 paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
@@ -98,7 +98,7 @@ paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 UnderBP <- hyperGTest(paramsBP)
 summary(UnderBP)
 UnderBP
-write.csv(summary(UnderBP),"UnderBP_enrich.slim.csv");
+write.csv(summary(UnderBP),"SNP.UnderBP_enrich.slim.csv");
 
 params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
@@ -111,6 +111,6 @@ params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 
 
 Under <- hyperGTest(params)
-summary(Under)
-Under
-write.csv(summary(Under),"UnderMF_enrich.slim.csv");
+summary(UnderMF)
+UnderMF
+write.csv(summary(UnderMF),"SNP.UnderMF_enrich.slim.csv");
