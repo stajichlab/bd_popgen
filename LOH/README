@@ -1,0 +1,10 @@
+Steps
+1. run perl extract.pl > LOH_locs.tab (requires Statistics::R)
+2. run perl make_shared.pl LOH_locs.tab > LOH_locs_combined.nex
+3. paup LOH_locs_combined.nex
+ outgroup UM142
+ set crit=dist
+ hsearch
+ nj
+ savetrees brlens=yes
+
