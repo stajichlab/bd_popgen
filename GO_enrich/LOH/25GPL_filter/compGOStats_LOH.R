@@ -4,7 +4,7 @@ genes <- CN0$V1
 
 allgenes <- read.csv("BD_trans_to_gene.tab",
 	 header=F,stringsAsFactors=F,sep=" ",quote="")
-universe <- allgenes$V2
+universe <- unique(allgenes$V2)
 
 #universe
 #genes
@@ -14,7 +14,7 @@ mode(universe)
 mode(genes)
 
 library("AnnotationDbi")
-godat <- read.table("JEL423.IPR_gene_uniq_update.go",header=F);
+godat <- read.table("JEL423.IPR.GO",header=F);
 goframeData <- data.frame(godat$V1, godat$V2, godat$V3)
 goFrame <- GOFrame(goframeData,organism="Batrachochytrium dendrobatidis")
 goAllFrame=GOAllFrame(goFrame)
@@ -37,7 +37,7 @@ params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 Over <- hyperGTest(params)
 summary(Over)
 Over
-write.csv(summary(Over),"Over_enrich.csv");
+write.csv(summary(Over),"OverMF_enrich.csv");
 paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
 	  geneIds = genes,
