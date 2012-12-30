@@ -34,9 +34,10 @@ params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 	  testDirection = "over")
 
 
-Over <- hyperGTest(params)
-summary(Over)
-Over
+OverMF <- hyperGTest(params)
+summary(OverMF)
+OverMF
+write.csv(summary(OverMF),"CN0.OverMF_enrich.csv");
 
 paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
@@ -50,6 +51,7 @@ paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 OverCC <- hyperGTest(paramsCC)
 summary(OverCC)
 OverCC
+write.csv(summary(OverCC),"CN0.OverCC_enrich.csv");
 
 paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
           geneSetCollection=gsc,
@@ -63,3 +65,4 @@ paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 OverBP <- hyperGTest(paramsBP)
 summary(OverBP)
 OverBP
+write.csv(summary(OverBP),"CN0.OverBP_enrich.csv");
