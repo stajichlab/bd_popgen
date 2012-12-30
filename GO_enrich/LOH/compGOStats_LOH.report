@@ -1,0 +1,425 @@
+WARNING: ignoring environment value of R_HOME
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-apple-darwin12.2.0/x86_64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # read in the table
+> CN0 <-read.table("loh_10k_strict_filter_rename.lst",header=F,sep="\t",stringsAsFactors=F, quote="")
+> genes <- CN0$V1
+> 
+> allgenes <- read.csv("BD_trans_to_gene.tab",
++ 	 header=F,stringsAsFactors=F,sep=" ",quote="")
+> universe <- allgenes$V2
+> 
+> #universe
+> #genes
+> 
+> # problem matching mode of this before
+> mode(universe)
+[1] "character"
+> mode(genes)
+[1] "character"
+> 
+> library("AnnotationDbi")
+> godat <- read.table("JEL423.IPR_gene_uniq_update.go",header=F);
+> goframeData <- data.frame(godat$V1, godat$V2, godat$V3)
+> goFrame <- GOFrame(goframeData,organism="Batrachochytrium dendrobatidis")
+> goAllFrame=GOAllFrame(goFrame)
+> 
+> library("GSEABase")
+> library("GOstats")
+> 
+> gsc <- GeneSetCollection(goAllFrame, setType = GOCollection())
+> 
+> params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++ 	  geneIds = genes,
++ 	  universeGeneIds = universe,
++ 	  ontology = "MF",
++ 	  pvalueCutoff = 0.05,
++ 	  conditional = FALSE,
++ 	  testDirection = "over")
+> 
+> 
+> Over <- hyperGTest(params)
+> summary(Over)
+       GOMFID     Pvalue OddsRatio    ExpCount Count Size
+1  GO:0004784 0.00236268  8.651737   3.1734048     8   10
+2  GO:0016721 0.00236268  8.651737   3.1734048     8   10
+3  GO:0008603 0.01010963       Inf   1.2693619     4    4
+4  GO:0004743 0.01010963       Inf   1.2693619     4    4
+5  GO:0004550 0.01010963       Inf   1.2693619     4    4
+6  GO:0030955 0.01010963       Inf   1.2693619     4    4
+7  GO:0031420 0.01010963       Inf   1.2693619     4    4
+8  GO:0016638 0.01414233 10.793529   1.9040429     5    6
+9  GO:0016491 0.02260536  1.299391  92.9807599   109  293
+10 GO:0000287 0.02731165  2.045317  11.1069167    17   35
+11 GO:0004567 0.03190753       Inf   0.9520214     3    3
+12 GO:0008889 0.03190753       Inf   0.9520214     3    3
+13 GO:0016985 0.03190753       Inf   0.9520214     3    3
+14 GO:0008810 0.03190753       Inf   0.9520214     3    3
+15 GO:0004198 0.03190753       Inf   0.9520214     3    3
+16 GO:0004176 0.03190753       Inf   0.9520214     3    3
+17 GO:0016639 0.03190753       Inf   0.9520214     3    3
+18 GO:0003933 0.03190753       Inf   0.9520214     3    3
+19 GO:0043167 0.03562346  1.188754 190.4042864   210  600
+20 GO:0043169 0.03562346  1.188754 190.4042864   210  600
+21 GO:0046872 0.03861034  1.187552 184.0574769   203  580
+22 GO:0043565 0.04109998  1.855698  12.3762786    18   39
+                                                                                     Term
+1                                                           superoxide dismutase activity
+2                      oxidoreductase activity, acting on superoxide radicals as acceptor
+3                                        cAMP-dependent protein kinase regulator activity
+4                                                                pyruvate kinase activity
+5                                                  nucleoside diphosphate kinase activity
+6                                                                   potassium ion binding
+7                                                                alkali metal ion binding
+8                           oxidoreductase activity, acting on the CH-NH2 group of donors
+9                                                                 oxidoreductase activity
+10                                                                  magnesium ion binding
+11                                                              beta-mannosidase activity
+12                                       glycerophosphodiester phosphodiesterase activity
+13                                              mannan endo-1,4-beta-mannosidase activity
+14                                                                     cellulase activity
+15                                 calcium-dependent cysteine-type endopeptidase activity
+16                                                       ATP-dependent peptidase activity
+17 oxidoreductase activity, acting on the CH-NH2 group of donors, NAD or NADP as acceptor
+18                                                            GTP cyclohydrolase activity
+19                                                                            ion binding
+20                                                                         cation binding
+21                                                                      metal ion binding
+22                                                          sequence-specific DNA binding
+> Over
+Gene to GO MF  test for over-representation 
+591 GO MF ids tested (22 have p < 0.05)
+Selected gene set size: 1303 
+    Gene universe size: 4106 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(Over),"Over_enrich.csv");
+> paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++ 	  geneIds = genes,
++ 	  universeGeneIds = universe,
++ 	  ontology = "CC",
++ 	  pvalueCutoff = 0.05,
++ 	  conditional = FALSE,
++ 	  testDirection = "over")
+> 
+> OverCC <- hyperGTest(paramsCC)
+> summary(OverCC)
+      GOCCID     Pvalue OddsRatio ExpCount Count Size                  Term
+1 GO:0016021 0.01193494  1.408096 79.32707    95  241  integral to membrane
+2 GO:0031224 0.01425519  1.388985 81.63118    97  248 intrinsic to membrane
+> OverCC
+Gene to GO CC  test for over-representation 
+194 GO CC ids tested (2 have p < 0.05)
+Selected gene set size: 473 
+    Gene universe size: 1437 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(OverCC),"OverCC_enrich.csv");
+> 
+> paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++ 	  geneIds = genes,
++ 	  universeGeneIds = universe,
++ 	  ontology = "BP",
++ 	  pvalueCutoff = 0.05,
++ 	  conditional = FALSE,
++ 	  testDirection = "over")
+> 
+> OverBP <- hyperGTest(paramsBP)
+> summary(OverBP)
+       GOBPID      Pvalue OddsRatio   ExpCount Count Size
+1  GO:0072593 0.002651426  8.463110  3.2268603     8   10
+2  GO:0006801 0.002651426  8.463110  3.2268603     8   10
+3  GO:0006563 0.003472039       Inf  1.6134301     5    5
+4  GO:0046051 0.010792744       Inf  1.2907441     4    4
+5  GO:0009148 0.010792744       Inf  1.2907441     4    4
+6  GO:0046036 0.010792744       Inf  1.2907441     4    4
+7  GO:0009208 0.010792744       Inf  1.2907441     4    4
+8  GO:0009209 0.010792744       Inf  1.2907441     4    4
+9  GO:0006165 0.010792744       Inf  1.2907441     4    4
+10 GO:0006183 0.010792744       Inf  1.2907441     4    4
+11 GO:0010382 0.010792744       Inf  1.2907441     4    4
+12 GO:0006228 0.010792744       Inf  1.2907441     4    4
+13 GO:0006241 0.010792744       Inf  1.2907441     4    4
+14 GO:0070882 0.010792744       Inf  1.2907441     4    4
+15 GO:0065008 0.011236139  2.405734 10.3259528    17   32
+16 GO:0016052 0.021198217  2.502594  7.7444646    13   24
+17 GO:0051641 0.022698292  1.472954 41.9491833    53  130
+18 GO:0055114 0.025203582  1.326958 78.7353902    93  244
+19 GO:0006950 0.029329780  1.621604 23.8787659    32   74
+20 GO:0006096 0.032103817  3.694444  3.5495463     7   11
+21 GO:0007155 0.033523287       Inf  0.9680581     3    3
+22 GO:0042816 0.033523287       Inf  0.9680581     3    3
+23 GO:0042819 0.033523287       Inf  0.9680581     3    3
+24 GO:0022610 0.033523287       Inf  0.9680581     3    3
+25 GO:0016042 0.033523287       Inf  0.9680581     3    3
+26 GO:0010383 0.033523287       Inf  0.9680581     3    3
+27 GO:0006080 0.033523287       Inf  0.9680581     3    3
+28 GO:0006071 0.033523287       Inf  0.9680581     3    3
+29 GO:0010410 0.033523287       Inf  0.9680581     3    3
+30 GO:0010412 0.033523287       Inf  0.9680581     3    3
+31 GO:0019400 0.033523287       Inf  0.9680581     3    3
+32 GO:0032501 0.033523287       Inf  0.9680581     3    3
+33 GO:0019320 0.034358603  2.642207  5.8083485    10   18
+34 GO:0046365 0.034358603  2.642207  5.8083485    10   18
+35 GO:0006007 0.034358603  2.642207  5.8083485    10   18
+36 GO:1901070 0.039226734  5.271493  2.2588022     5    7
+37 GO:0009132 0.039226734  5.271493  2.2588022     5    7
+38 GO:0006289 0.039226734  5.271493  2.2588022     5    7
+39 GO:0005975 0.039675157  1.361325 52.2751361    63  162
+40 GO:0009147 0.040075566  8.429379  1.6134301     4    5
+41 GO:0044036 0.040075566  8.429379  1.6134301     4    5
+42 GO:0051651 0.040075566  8.429379  1.6134301     4    5
+43 GO:0045185 0.040075566  8.429379  1.6134301     4    5
+44 GO:0071554 0.040075566  8.429379  1.6134301     4    5
+45 GO:0051235 0.040075566  8.429379  1.6134301     4    5
+46 GO:0032507 0.040075566  8.429379  1.6134301     4    5
+47 GO:0019318 0.044128208  1.984411 10.0032668    15   31
+                                                          Term
+1                    reactive oxygen species metabolic process
+2                                 superoxide metabolic process
+3                                   L-serine metabolic process
+4                                        UTP metabolic process
+5      pyrimidine nucleoside triphosphate biosynthetic process
+6                                        CTP metabolic process
+7     pyrimidine ribonucleoside triphosphate metabolic process
+8  pyrimidine ribonucleoside triphosphate biosynthetic process
+9                       nucleoside diphosphate phosphorylation
+10                                    GTP biosynthetic process
+11          cellular cell wall macromolecule metabolic process
+12                                    UTP biosynthetic process
+13                                    CTP biosynthetic process
+14               cellular cell wall organization or biogenesis
+15                            regulation of biological quality
+16                              carbohydrate catabolic process
+17                                       cellular localization
+18                                 oxidation-reduction process
+19                                          response to stress
+20                                                  glycolysis
+21                                               cell adhesion
+22                                vitamin B6 metabolic process
+23                             vitamin B6 biosynthetic process
+24                                         biological adhesion
+25                                     lipid catabolic process
+26                  cell wall polysaccharide metabolic process
+27                        substituted mannan metabolic process
+28                                  glycerol metabolic process
+29                             hemicellulose metabolic process
+30                                    mannan metabolic process
+31                                   alditol metabolic process
+32                            multicellular organismal process
+33                                    hexose catabolic process
+34                            monosaccharide catabolic process
+35                                   glucose catabolic process
+36          guanosine-containing compound biosynthetic process
+37                    nucleoside diphosphate metabolic process
+38                                  nucleotide-excision repair
+39                              carbohydrate metabolic process
+40        pyrimidine nucleoside triphosphate metabolic process
+41                   cell wall macromolecule metabolic process
+42                             maintenance of location in cell
+43                             maintenance of protein location
+44                        cell wall organization or biogenesis
+45                                     maintenance of location
+46                     maintenance of protein location in cell
+47                                    hexose metabolic process
+> OverBP
+Gene to GO BP  test for over-representation 
+921 GO BP ids tested (47 have p < 0.05)
+Selected gene set size: 889 
+    Gene universe size: 2755 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(OverBP),"OverBP_enrich.csv");
+> 
+> 
+> params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++           geneIds = genes,
++           universeGeneIds = universe,
++           ontology = "MF",
++           pvalueCutoff = 0.05,
++           conditional = FALSE,
++           testDirection = "under")
+> 
+> 
+> Under <- hyperGTest(params)
+> summary(Under)
+       GOMFID      Pvalue OddsRatio   ExpCount Count Size
+1  GO:0030247 0.004898811 0.1125394   6.346810     1   20
+2  GO:0008061 0.004898811 0.1125394   6.346810     1   20
+3  GO:0001871 0.004898811 0.1125394   6.346810     1   20
+4  GO:0000981 0.010167103 0.0000000   3.808086     0   12
+5  GO:0003723 0.015941570 0.6591793  49.505114    37  156
+6  GO:0016740 0.017000060 0.8078330 184.374817   162  581
+7  GO:0016772 0.018018537 0.7596033 105.357038    88  332
+8  GO:0034062 0.018751763 0.3288920   9.520214     4   30
+9  GO:0003899 0.018751763 0.3288920   9.520214     4   30
+10 GO:0004540 0.031042945 0.3565563   8.885533     4   28
+11 GO:0008757 0.035616239 0.1648352   4.442767     1   14
+12 GO:0016773 0.045406411 0.7654861  72.988310    61  230
+13 GO:0016741 0.046494696 0.5860752  20.627131    14   65
+14 GO:0005099 0.048166572 0.3381377   6.981491     3   22
+                                                                            Term
+1                                                         polysaccharide binding
+2                                                                 chitin binding
+3                                                                pattern binding
+4  sequence-specific DNA binding RNA polymerase II transcription factor activity
+5                                                                    RNA binding
+6                                                           transferase activity
+7                transferase activity, transferring phosphorus-containing groups
+8                                                        RNA polymerase activity
+9                                           DNA-directed RNA polymerase activity
+10                                                         ribonuclease activity
+11                     S-adenosylmethionine-dependent methyltransferase activity
+12                        phosphotransferase activity, alcohol group as acceptor
+13                          transferase activity, transferring one-carbon groups
+14                                                 Ras GTPase activator activity
+> Under
+Gene to GO MF  test for under-representation 
+993 GO MF ids tested (14 have p < 0.05)
+Selected gene set size: 1303 
+    Gene universe size: 4106 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(Under),"UnderMF_enrich.csv");
+> 
+> 
+> paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++           geneIds = genes,
++           universeGeneIds = universe,
++           ontology = "CC",
++           pvalueCutoff = 0.05,
++           conditional = FALSE,
++           testDirection = "under")
+> 
+> UnderCC <- hyperGTest(paramsCC)
+> summary(UnderCC)
+       GOCCID     Pvalue OddsRatio   ExpCount Count Size
+1  GO:0005622 0.01060255 0.7466563 341.007655   322 1036
+2  GO:0005623 0.01423138 0.7556792 343.970077   326 1045
+3  GO:0044464 0.01423138 0.7556792 343.970077   326 1045
+4  GO:0005634 0.01855671 0.7217261  84.593598    70  257
+5  GO:0030880 0.02885165 0.1549870   4.608212     1   14
+6  GO:0055029 0.04046646 0.1680791   4.279054     1   13
+7  GO:0000428 0.04046646 0.1680791   4.279054     1   13
+8  GO:0045259 0.04062486 0.0000000   2.633264     0    8
+9  GO:0043227 0.04445691 0.7951697 123.763396   110  376
+10 GO:0043231 0.04445691 0.7951697 123.763396   110  376
+11 GO:0005694 0.04629968 0.4458720  10.862213     6   33
+                                          Term
+1                                intracellular
+2                                         cell
+3                                    cell part
+4                                      nucleus
+5                       RNA polymerase complex
+6  nuclear DNA-directed RNA polymerase complex
+7          DNA-directed RNA polymerase complex
+8     proton-transporting ATP synthase complex
+9                   membrane-bounded organelle
+10    intracellular membrane-bounded organelle
+11                                  chromosome
+> UnderCC
+Gene to GO CC  test for under-representation 
+302 GO CC ids tested (11 have p < 0.05)
+Selected gene set size: 473 
+    Gene universe size: 1437 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(UnderCC),"UnderCC_enrich.csv");
+> 
+> paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++           geneIds = genes,
++           universeGeneIds = universe,
++           ontology = "BP",
++           pvalueCutoff = 0.05,
++           conditional = FALSE,
++           testDirection = "under")
+> 
+> UnderBP <- hyperGTest(paramsBP)
+> summary(UnderBP)
+       GOBPID       Pvalue OddsRatio   ExpCount Count Size
+1  GO:0006396 0.0006909724 0.4595234  35.172777    20  109
+2  GO:0006807 0.0007849100 0.7337558 220.717241   187  684
+3  GO:0034641 0.0008222204 0.7338726 218.458439   185  677
+4  GO:0006139 0.0011094724 0.7353147 205.873684   174  638
+5  GO:0016070 0.0021787190 0.6791770 103.582214    81  321
+6  GO:0019637 0.0060952541 0.6299918  56.147368    41  174
+7  GO:0034470 0.0109661682 0.3661315  12.907441     6   40
+8  GO:0065009 0.0180775379 0.4368242  14.843557     8   46
+9  GO:0090304 0.0206011143 0.7913869 149.080944   130  462
+10 GO:0006650 0.0208640089 0.3328362   9.357895     4   29
+11 GO:0046486 0.0208640089 0.3328362   9.357895     4   29
+12 GO:0050790 0.0224648626 0.4488757  14.520871     8   45
+13 GO:0006644 0.0225089603 0.4022212  11.939383     6   37
+14 GO:0016071 0.0270144659 0.3468927   9.035209     4   28
+15 GO:0046854 0.0298125922 0.0000000   2.904174     0    9
+16 GO:0046834 0.0298125922 0.0000000   2.904174     0    9
+17 GO:0015985 0.0298125922 0.0000000   2.904174     0    9
+18 GO:0015986 0.0298125922 0.0000000   2.904174     0    9
+19 GO:0016310 0.0331453494 0.7426787  71.636298    59  222
+20 GO:0046488 0.0348149292 0.3621715   8.712523     4   27
+21 GO:0008033 0.0348149292 0.3621715   8.712523     4   27
+22 GO:0034660 0.0356627389 0.5758963  22.265336    15   69
+23 GO:0006793 0.0420110258 0.7692073  81.639564    69  253
+24 GO:0006796 0.0420110258 0.7692073  81.639564    69  253
+25 GO:0006397 0.0446452551 0.3788392   8.389837     4   26
+26 GO:0031329 0.0446452551 0.3788392   8.389837     4   26
+27 GO:0051336 0.0446452551 0.3788392   8.389837     4   26
+28 GO:0006140 0.0446452551 0.3788392   8.389837     4   26
+29 GO:0006468 0.0458869192 0.7507040  65.182577    54  202
+30 GO:0044260 0.0476180362 0.8652680 334.302722   314 1036
+                                                             Term
+1                                                  RNA processing
+2                             nitrogen compound metabolic process
+3                    cellular nitrogen compound metabolic process
+4                nucleobase-containing compound metabolic process
+5                                           RNA metabolic process
+6                               organophosphate metabolic process
+7                                                ncRNA processing
+8                                regulation of molecular function
+9                                  nucleic acid metabolic process
+10                          glycerophospholipid metabolic process
+11                                 glycerolipid metabolic process
+12                               regulation of catalytic activity
+13                                 phospholipid metabolic process
+14                                         mRNA metabolic process
+15                           phosphatidylinositol phosphorylation
+16                                          lipid phosphorylation
+17 energy coupled proton transport, down electrochemical gradient
+18                         ATP synthesis coupled proton transport
+19                                                phosphorylation
+20                         phosphatidylinositol metabolic process
+21                                                tRNA processing
+22                                        ncRNA metabolic process
+23                                   phosphorus metabolic process
+24                phosphate-containing compound metabolic process
+25                                                mRNA processing
+26                       regulation of cellular catabolic process
+27                               regulation of hydrolase activity
+28                     regulation of nucleotide metabolic process
+29                                        protein phosphorylation
+30                       cellular macromolecule metabolic process
+> UnderBP
+Gene to GO BP  test for under-representation 
+1282 GO BP ids tested (30 have p < 0.05)
+Selected gene set size: 889 
+    Gene universe size: 2755 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(UnderBP),"UnderBP_enrich.csv");
+> 

@@ -1,0 +1,210 @@
+
+R version 2.15.0 (2012-03-30)
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # read in the table
+> CN0 <-read.table("loh_10k_strict_filter_rename.lst",header=F,sep="\t",stringsAsFactors=F, quote="")
+> genes <- CN0$V1
+> 
+> allgenes <- read.csv("BD_trans_to_gene.tab",
++ 	 header=F,stringsAsFactors=F,sep=" ",quote="")
+> universe <- allgenes$V2
+> 
+> #universe
+> #genes
+> 
+> # problem matching mode of this before
+> mode(universe)
+[1] "character"
+> mode(genes)
+[1] "character"
+> 
+> library("AnnotationDbi")
+> godat <- read.table("JEL423.INTERPRO.go_slim",header=F,sep="\t");
+> goframeData <- data.frame(godat$V1, godat$V2, godat$V3)
+> goFrame <- GOFrame(goframeData,organism="Batrachochytrium dendrobatidis")
+> goAllFrame=GOAllFrame(goFrame)
+> 
+> library("GSEABase")
+> library("GOstats")
+> 
+> gsc <- GeneSetCollection(goAllFrame, setType = GOCollection())
+> 
+> params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++ 	  geneIds = genes,
++ 	  universeGeneIds = universe,
++ 	  ontology = "MF",
++ 	  pvalueCutoff = 0.05,
++ 	  conditional = FALSE,
++ 	  testDirection = "over")
+> 
+> 
+> Over <- hyperGTest(params)
+> summary(Over)
+      GOMFID     Pvalue OddsRatio ExpCount Count Size                    Term
+1 GO:0016491 0.02727556  1.287133 92.64142   108  292 oxidoreductase activity
+> Over
+Gene to GO MF  test for over-representation 
+55 GO MF ids tested (1 have p < 0.05)
+Selected gene set size: 1290 
+    Gene universe size: 4066 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(Over),"Over_enrich.slim.csv");
+> paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++ 	  geneIds = genes,
++ 	  universeGeneIds = universe,
++ 	  ontology = "CC",
++ 	  pvalueCutoff = 0.05,
++ 	  conditional = FALSE,
++ 	  testDirection = "over")
+> 
+> OverCC <- hyperGTest(paramsCC)
+> summary(OverCC)
+      GOCCID      Pvalue OddsRatio ExpCount Count Size                 Term
+1 GO:0005739 0.007480752     4.695 4.256063     9   13        mitochondrion
+2 GO:0005576 0.007480752     4.695 4.256063     9   13 extracellular region
+> OverCC
+Gene to GO CC  test for over-representation 
+44 GO CC ids tested (2 have p < 0.05)
+Selected gene set size: 459 
+    Gene universe size: 1402 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(OverCC),"OverCC_enrich.slim.csv");
+> 
+> paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++ 	  geneIds = genes,
++ 	  universeGeneIds = universe,
++ 	  ontology = "BP",
++ 	  pvalueCutoff = 0.05,
++ 	  conditional = FALSE,
++ 	  testDirection = "over")
+> 
+> OverBP <- hyperGTest(paramsBP)
+> summary(OverBP)
+[1] GOBPID    Pvalue    OddsRatio ExpCount  Count     Size      Term     
+<0 rows> (or 0-length row.names)
+> OverBP
+Gene to GO BP  test for over-representation 
+180 GO BP ids tested (0 have p < 0.05)
+Selected gene set size: 873 
+    Gene universe size: 2704 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(OverBP),"OverBP_enrich.slim.csv");
+> 
+> 
+> params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++           geneIds = genes,
++           universeGeneIds = universe,
++           ontology = "MF",
++           pvalueCutoff = 0.05,
++           conditional = FALSE,
++           testDirection = "under")
+> 
+> 
+> Under <- hyperGTest(params)
+> summary(Under)
+      GOMFID     Pvalue OddsRatio   ExpCount Count Size
+1 GO:0003723 0.02182263 0.6703601  47.589769    36  150
+2 GO:0016772 0.02463473 0.7616748  94.545007    79  298
+3 GO:0016788 0.04024238 0.6575416  33.630103    25  106
+4 GO:0016740 0.04291360 0.8313833 160.218888   143  505
+5 GO:0022892 0.04823504 0.3382407   6.979833     3   22
+6 GO:0008565 0.04823504 0.3382407   6.979833     3   22
+                                                             Term
+1                                                     RNA binding
+2 transferase activity, transferring phosphorus-containing groups
+3                       hydrolase activity, acting on ester bonds
+4                                            transferase activity
+5                         substrate-specific transporter activity
+6                                    protein transporter activity
+> Under
+Gene to GO MF  test for under-representation 
+58 GO MF ids tested (6 have p < 0.05)
+Selected gene set size: 1290 
+    Gene universe size: 4066 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(Under),"UnderMF_enrich.slim.csv");
+> 
+> 
+> paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++           geneIds = genes,
++           universeGeneIds = universe,
++           ontology = "CC",
++           pvalueCutoff = 0.05,
++           conditional = FALSE,
++           testDirection = "under")
+> 
+> UnderCC <- hyperGTest(paramsCC)
+> summary(UnderCC)
+      GOCCID     Pvalue OddsRatio ExpCount Count Size    Term
+1 GO:0005634 0.01069333  0.655273 59.91227    46  183 nucleus
+> UnderCC
+Gene to GO CC  test for under-representation 
+48 GO CC ids tested (1 have p < 0.05)
+Selected gene set size: 459 
+    Gene universe size: 1402 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(UnderCC),"UnderCC_enrich.slim.csv");
+> 
+> paramsBP <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
++           geneSetCollection=gsc,
++           geneIds = genes,
++           universeGeneIds = universe,
++           ontology = "BP",
++           pvalueCutoff = 0.05,
++           conditional = FALSE,
++           testDirection = "under")
+> 
+> UnderBP <- hyperGTest(paramsBP)
+> summary(UnderBP)
+       GOBPID      Pvalue OddsRatio   ExpCount Count Size
+1  GO:0006396 0.001411262 0.3563702  19.694157     9   61
+2  GO:0016070 0.001788065 0.5257928  41.002589    26  127
+3  GO:0010467 0.008377894 0.6319459  51.979660    38  161
+4  GO:0034470 0.013904699 0.3770578  12.591346     6   39
+5  GO:0006807 0.021417187 0.7666507 110.739275    94  343
+6  GO:0034641 0.021417187 0.7666507 110.739275    94  343
+7  GO:0006139 0.021417187 0.7666507 110.739275    94  343
+8  GO:0034660 0.031549683 0.5575804  21.308432    14   66
+9  GO:0006351 0.042880101 0.3288566   7.102811     3   22
+10 GO:0032774 0.042880101 0.3288566   7.102811     3   22
+11 GO:0008033 0.044464703 0.3784915   8.394231     4   26
+                                               Term
+1                                    RNA processing
+2                             RNA metabolic process
+3                                   gene expression
+4                                  ncRNA processing
+5               nitrogen compound metabolic process
+6      cellular nitrogen compound metabolic process
+7  nucleobase-containing compound metabolic process
+8                           ncRNA metabolic process
+9                      transcription, DNA-dependent
+10                         RNA biosynthetic process
+11                                  tRNA processing
+> UnderBP
+Gene to GO BP  test for under-representation 
+207 GO BP ids tested (11 have p < 0.05)
+Selected gene set size: 873 
+    Gene universe size: 2704 
+    Annotation package: Based on a GeneSetCollection Object 
+> write.csv(summary(UnderBP),"UnderBP_enrich.slim.csv");
+> 
