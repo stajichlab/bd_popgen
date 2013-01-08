@@ -86,7 +86,7 @@ params <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
 UnderMF <- hyperGTest(params)
 summary(UnderMF)
 UnderMF
-write.csv(summary(Under),"SNP.UnderMF_enrich.csv");
+write.csv(summary(UnderMF),"SNP.UnderMF_enrich.csv");
 
 
 paramsCC <- GSEAGOHyperGParams(name="My Custom GSEA based annot Params",
