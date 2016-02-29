@@ -1,0 +1,4 @@
+"","GOBPID","Pvalue","OddsRatio","ExpCount","Count","Size","Term"
+"1","GO:0005975",0.00604358473491339,0,4.88058076225045,0,162,"carbohydrate metabolic process"
+"2","GO:0009058",0.0106520786088973,0.47525641025641,19.9139745916515,11,661,"biosynthetic process"
+"3","GO:0044249",0.0230601997554684,0.517537858055099,18.6787658802178,11,620,"cellular biosynthetic process"
